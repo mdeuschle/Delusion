@@ -9,23 +9,23 @@
 /* Begin PBXBuildFile section */
 		9F4EE359E2399A4858DC2F87 /* Pods_Delusion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA690EF76E70EAB29144B6 /* Pods_Delusion.framework */; };
 		A888F0E41E22C4AD002383DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F0E31E22C4AD002383DC /* AppDelegate.swift */; };
-		A888F0E61E22C4AD002383DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F0E51E22C4AD002383DC /* ViewController.swift */; };
 		A888F0E91E22C4AD002383DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A888F0E71E22C4AD002383DC /* Main.storyboard */; };
-		A888F0EB1E22C4AD002383DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A888F0EA1E22C4AD002383DC /* Assets.xcassets */; };
 		A888F0EE1E22C4AD002383DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A888F0EC1E22C4AD002383DC /* LaunchScreen.storyboard */; };
 		A888F0F61E22C8A0002383DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A888F0F51E22C8A0002383DC /* GoogleService-Info.plist */; };
+		A888F0FB1E22CC97002383DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F0FA1E22CC97002383DC /* LoginViewController.swift */; };
+		A888F0FD1E22E152002383DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A888F0FC1E22E152002383DC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0538FDCDDF8B6B7C25F38BA6 /* Pods-Delusion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delusion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delusion/Pods-Delusion.debug.xcconfig"; sourceTree = "<group>"; };
 		A888F0E01E22C4AD002383DC /* Delusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Delusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A888F0E31E22C4AD002383DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A888F0E51E22C4AD002383DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A888F0E81E22C4AD002383DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A888F0EA1E22C4AD002383DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A888F0ED1E22C4AD002383DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A888F0EF1E22C4AD002383DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A888F0F51E22C8A0002383DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A888F0FA1E22CC97002383DC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A888F0FC1E22E152002383DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB4A04F014ECF137C837BB67 /* Pods-Delusion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delusion.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delusion/Pods-Delusion.release.xcconfig"; sourceTree = "<group>"; };
 		E8BA690EF76E70EAB29144B6 /* Pods_Delusion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delusion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,15 +80,39 @@
 		A888F0E21E22C4AD002383DC /* Delusion */ = {
 			isa = PBXGroup;
 			children = (
+				A888F0F91E22CC56002383DC /* Model */,
+				A888F0F81E22CC50002383DC /* View */,
+				A888F0F71E22CC42002383DC /* Controller */,
 				A888F0E31E22C4AD002383DC /* AppDelegate.swift */,
-				A888F0E51E22C4AD002383DC /* ViewController.swift */,
 				A888F0E71E22C4AD002383DC /* Main.storyboard */,
-				A888F0EA1E22C4AD002383DC /* Assets.xcassets */,
+				A888F0FC1E22E152002383DC /* Assets.xcassets */,
 				A888F0EC1E22C4AD002383DC /* LaunchScreen.storyboard */,
 				A888F0EF1E22C4AD002383DC /* Info.plist */,
 				A888F0F51E22C8A0002383DC /* GoogleService-Info.plist */,
 			);
 			path = Delusion;
+			sourceTree = "<group>";
+		};
+		A888F0F71E22CC42002383DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A888F0FA1E22CC97002383DC /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A888F0F81E22CC50002383DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A888F0F91E22CC56002383DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A888F0EE1E22C4AD002383DC /* LaunchScreen.storyboard in Resources */,
-				A888F0EB1E22C4AD002383DC /* Assets.xcassets in Resources */,
 				A888F0E91E22C4AD002383DC /* Main.storyboard in Resources */,
+				A888F0FD1E22E152002383DC /* Assets.xcassets in Resources */,
 				A888F0F61E22C8A0002383DC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A888F0E61E22C4AD002383DC /* ViewController.swift in Sources */,
+				A888F0FB1E22CC97002383DC /* LoginViewController.swift in Sources */,
 				A888F0E41E22C4AD002383DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +407,7 @@
 				A888F0F41E22C4AD002383DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
