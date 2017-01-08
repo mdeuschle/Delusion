@@ -14,6 +14,7 @@
 		A888F0F61E22C8A0002383DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A888F0F51E22C8A0002383DC /* GoogleService-Info.plist */; };
 		A888F0FB1E22CC97002383DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F0FA1E22CC97002383DC /* LoginViewController.swift */; };
 		A888F0FD1E22E152002383DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A888F0FC1E22E152002383DC /* Assets.xcassets */; };
+		A888F1011E2301D5002383DC /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F1001E2301D5002383DC /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A888F0F51E22C8A0002383DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A888F0FA1E22CC97002383DC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A888F0FC1E22E152002383DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A888F1001E2301D5002383DC /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		BB4A04F014ECF137C837BB67 /* Pods-Delusion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delusion.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delusion/Pods-Delusion.release.xcconfig"; sourceTree = "<group>"; };
 		E8BA690EF76E70EAB29144B6 /* Pods_Delusion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delusion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 		A888F0F81E22CC50002383DC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A888F1001E2301D5002383DC /* RoundedButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A888F0FB1E22CC97002383DC /* LoginViewController.swift in Sources */,
+				A888F1011E2301D5002383DC /* RoundedButton.swift in Sources */,
 				A888F0E41E22C4AD002383DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

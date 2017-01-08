@@ -34,10 +34,10 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qm-sb-aAY">
-                                <rect key="frame" x="16" y="301.5" width="343" height="110"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qm-sb-aAY" customClass="RoundedButton" customModule="Delusion" customModuleProvider="target">
+                                <rect key="frame" x="34" y="305.5" width="307" height="86"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="2fn-y1-vgm"/>
+                                    <constraint firstAttribute="height" constant="86" id="2fn-y1-vgm"/>
                                 </constraints>
                                 <state key="normal" image="FB"/>
                             </button>
@@ -79,7 +79,7 @@
                                     <constraint firstAttribute="height" constant="1" id="oqD-cV-gHb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLc-g3-I0f">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLc-g3-I0f" customClass="RoundedButton" customModule="Delusion" customModuleProvider="target">
                                 <rect key="frame" x="36" y="549.5" width="303" height="44"/>
                                 <color key="backgroundColor" red="0.37775316834449768" green="0.79370385408401489" blue="0.74529069662094116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -104,7 +104,7 @@
                             <constraint firstItem="vuF-yZ-Iud" firstAttribute="top" secondItem="TyW-ZC-Fah" secondAttribute="bottom" constant="12" id="Ez6-g5-R7W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mr5-Ke-Iua" secondAttribute="trailing" constant="20" id="Htb-tH-rY9"/>
                             <constraint firstItem="csG-89-jFm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="QBe-Qy-MI8"/>
-                            <constraint firstItem="5Qm-sb-aAY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="TjM-yU-ZvY"/>
+                            <constraint firstItem="5Qm-sb-aAY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="TjM-yU-ZvY"/>
                             <constraint firstItem="U2s-Ek-D30" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ung-Bs-2qu"/>
                             <constraint firstItem="Mr5-Ke-Iua" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="V9d-rJ-uRd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gvs-O9-lsW" secondAttribute="trailing" id="VxF-I2-dxb"/>
@@ -115,9 +115,9 @@
                             <constraint firstItem="rLc-g3-I0f" firstAttribute="top" secondItem="Mr5-Ke-Iua" secondAttribute="bottom" constant="20" id="hEj-UN-c6u"/>
                             <constraint firstAttribute="trailing" secondItem="C1p-iC-igw" secondAttribute="trailing" id="jGI-Fl-Wrt"/>
                             <constraint firstItem="csG-89-jFm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jMb-aD-9lO"/>
-                            <constraint firstItem="U2s-Ek-D30" firstAttribute="top" secondItem="5Qm-sb-aAY" secondAttribute="bottom" id="mtV-KH-ixU"/>
+                            <constraint firstItem="U2s-Ek-D30" firstAttribute="top" secondItem="5Qm-sb-aAY" secondAttribute="bottom" constant="20" id="mtV-KH-ixU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TyW-ZC-Fah" secondAttribute="trailing" constant="20" id="nLe-n8-65X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Qm-sb-aAY" secondAttribute="trailing" id="orq-3i-gI0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Qm-sb-aAY" secondAttribute="trailing" constant="18" id="orq-3i-gI0"/>
                             <constraint firstItem="Mr5-Ke-Iua" firstAttribute="top" secondItem="vuF-yZ-Iud" secondAttribute="bottom" constant="8" id="qK2-dy-L06"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C1p-iC-igw" secondAttribute="bottom" id="sog-te-VTP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U2s-Ek-D30" secondAttribute="trailing" constant="20" id="zWS-lO-g60"/>
@@ -130,7 +130,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FB" width="800" height="300"/>
+        <image name="FB" width="709" height="146"/>
         <image name="Login" width="400" height="600"/>
     </resources>
 </document>
