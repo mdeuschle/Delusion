@@ -20,6 +20,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let navigation = navigationController {
+            navigation.setNavigationBarHidden(true, animated: true)
+        }
 
     }
 
