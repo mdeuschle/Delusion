@@ -15,9 +15,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var feedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let navigation = navigationController {
-            navigation.setNavigationBarHidden(true, animated: true)
-        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

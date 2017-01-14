@@ -20,10 +20,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let navigation = navigationController {
-            navigation.setNavigationBarHidden(true, animated: true)
-        }
-
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -111,5 +109,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
         performSegue(withIdentifier: "feedSegue", sender: nil)
     }
+
+    func keyboardWillShow(notification: NSNotification) {
+
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0{
+                view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y != 0{
+                view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+
+
 }
+
+
 

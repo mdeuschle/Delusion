@@ -21,6 +21,6 @@ class ShadowView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = 5
+        layer.cornerRadius = 3
     }
 }
