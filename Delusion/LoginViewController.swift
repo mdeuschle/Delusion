@@ -82,25 +82,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginButtonTapped(_ sender: RoundedButton) {
+
         if let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                if let oldUser = user {
                     if error == nil {
-                        print("User email authenciated with Firebase \(oldUser.email)")
-                        self.keyChainSignIn(id: oldUser.uid)
+                        print("User email authenciated with Firebase")
+                        if let user = user {
+                            self.keyChainSignIn(id: user.uid)
+                        }
                     } else {
                         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                            if let newUser = user {
                                 if error != nil {
-                                    print("Error during email login \(error?.localizedDescription)")
+                                    print("Error during email login \(error)")
                                 } else {
-                                    print("New user created \(newUser.email)")
-                                    self.keyChainSignIn(id: newUser.uid)
+                                    print("New user created")
+                                    if let user = user {
+                                        self.keyChainSignIn(id: user.uid)
+                                    }
                                 }
-                            }
                         })
                     }
-                }
             })
         }
     }

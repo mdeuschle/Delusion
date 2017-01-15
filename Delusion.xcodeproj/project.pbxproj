@@ -33,6 +33,7 @@
 		A888F0FA1E22CC97002383DC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A888F0FC1E22E152002383DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A888F1001E2301D5002383DC /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A88CB7061E2AF099000D1282 /* Delusion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Delusion.entitlements; sourceTree = "<group>"; };
 		A89753631E2335D700535BB4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A89753651E2376DF00535BB4 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A89753671E24AD1300535BB4 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		A888F0E21E22C4AD002383DC /* Delusion */ = {
 			isa = PBXGroup;
 			children = (
+				A88CB7061E2AF099000D1282 /* Delusion.entitlements */,
 				A888F0F91E22CC56002383DC /* Model */,
 				A888F0F81E22CC50002383DC /* View */,
 				A888F0F71E22CC42002383DC /* Controller */,
@@ -179,6 +181,11 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 3DKZWJ5854;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -399,6 +406,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Delusion/Delusion.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;
 				INFOPLIST_FILE = Delusion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -414,6 +422,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Delusion/Delusion.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;
 				INFOPLIST_FILE = Delusion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
