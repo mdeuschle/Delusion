@@ -149,7 +149,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="U2s-Ek-D30" id="6l6-nG-3ps"/>
                         <outlet property="passwordTextField" destination="vuF-yZ-Iud" id="CrI-0X-0JI"/>
-                        <segue destination="HKr-tp-iv7" kind="show" identifier="feedSegue" id="eZf-gS-gJm"/>
+                        <segue destination="HKr-tp-iv7" kind="show" identifier="FeedSegue" id="eZf-gS-gJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -368,6 +368,7 @@
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="RdD-L4-6lR"/>
                     <connections>
                         <outlet property="feedTableView" destination="xn3-OX-Dq9" id="Lh8-cO-pEU"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LoginSegue" id="s70-8G-qQN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqn-u4-JzX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -34,12 +34,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
 
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("Removed keychain: \(keychainResult)")
+        print("*Removed keychain: \(keychainResult)")
         do {
             try FIRAuth.auth()?.signOut()
-            if let navigation = navigationController {
-                navigation.popViewController(animated: true)
-            }
+            performSegue(withIdentifier: "LoginSegue", sender: nil)
         } catch {
             print("Unable to sign out \(error)")
         }

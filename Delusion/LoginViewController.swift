@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         if let retrievedString = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            performSegue(withIdentifier: "feedSegue", sender: nil)
+            performSegue(withIdentifier: "FeedSegue", sender: nil)
             print("KEY UID: \(retrievedString)")
         }
     }
@@ -75,7 +75,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     print("Not able to authenticate with Firebase \(error?.localizedDescription)")
                 } else {
                     print("Successfully authenticated with Firebase \(fbUser.debugDescription)")
-                    self.keyChainSignIn(id: fbUser.uid)
+                    let userData = self.createUserDataDic(providerID: credential.provider)
+                    self.userSignIn(id: fbUser.uid, userData: userData)
                 }
             }
         })
@@ -85,30 +86,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         if let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                    if error == nil {
-                        print("User email authenciated with Firebase")
-                        if let user = user {
-                            self.keyChainSignIn(id: user.uid)
-                        }
-                    } else {
-                        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                                if error != nil {
-                                    print("Error during email login \(error)")
-                                } else {
-                                    print("New user created")
-                                    if let user = user {
-                                        self.keyChainSignIn(id: user.uid)
-                                    }
-                                }
-                        })
+                if error == nil {
+                    print("User email authenciated with Firebase")
+                    if let emailUser = user {
+                        let userData = self.createUserDataDic(providerID: emailUser.providerID)
+                        self.userSignIn(id: emailUser.uid, userData: userData)
                     }
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                        if let emailUser = user {
+                            if error != nil {
+                                print("Error during email login \(error)")
+                            } else {
+                                print("New user created")
+                                let userData = self.createUserDataDic(providerID: emailUser.providerID)
+                                self.userSignIn(id: emailUser.uid, userData: userData)
+                            }
+                        }
+                    })
+                }
             })
         }
     }
 
-    func keyChainSignIn(id: String) {
+    func createUserDataDic(providerID: String) -> [String: String] {
+        return ["provider": providerID]
+    }
+
+    func userSignIn(id: String, userData: [String: String]) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         KeychainWrapper.standard.set(id, forKey: KEY_UID)
-        performSegue(withIdentifier: "feedSegue", sender: nil)
+        performSegue(withIdentifier: "FeedSegue", sender: nil)
     }
 
     func keyboardWillShow(notification: NSNotification) {
@@ -128,7 +136,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-
+    
 }
 
 
