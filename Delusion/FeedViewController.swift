@@ -15,6 +15,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var feedTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // get ref to DB
+        DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
+            print("Snapshot Value: \(snapshot.value)")
+        })
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
