@@ -10,14 +10,20 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet var cameraButton: UIButton!
     @IBOutlet var feedTableView: UITableView!
 
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshots) in
             if let snaps = snapshots.children.allObjects as? [FIRDataSnapshot] {
@@ -51,6 +57,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            cameraButton.setBackgroundImage(image, for: .normal)
+        } else {
+            print("Image not found")
+        }
+
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
 
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
@@ -61,8 +77,20 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         } catch {
             print("Unable to sign out \(error)")
         }
-
-
     }
 
+    @IBAction func camButtonTapped(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
 }
+
+
+
+
+
+
+
+
+
+

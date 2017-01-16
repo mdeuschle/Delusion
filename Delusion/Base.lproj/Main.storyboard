@@ -215,6 +215,9 @@
                                                     <constraint firstAttribute="height" constant="49" id="i51-bR-wja"/>
                                                 </constraints>
                                                 <state key="normal" title="Cam"/>
+                                                <connections>
+                                                    <action selector="camButtonTapped:" destination="U0w-xu-CNt" eventType="touchUpInside" id="iEm-TQ-ry4"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-6h-W40">
                                                 <rect key="frame" x="54" y="0.0" width="251" height="49"/>
@@ -228,6 +231,7 @@
                                                     <constraint firstAttribute="height" constant="49" id="Nyp-pv-chy"/>
                                                     <constraint firstAttribute="width" constant="49" id="uxy-FN-b95"/>
                                                 </constraints>
+                                                <state key="normal" title="Post"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -367,6 +371,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="RdD-L4-6lR"/>
                     <connections>
+                        <outlet property="cameraButton" destination="RE5-lW-KA3" id="J9l-rj-Emn"/>
                         <outlet property="feedTableView" destination="xn3-OX-Dq9" id="Lh8-cO-pEU"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LoginSegue" id="s70-8G-qQN"/>
                     </connections>
