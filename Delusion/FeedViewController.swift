@@ -43,13 +43,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell else {
+            return UITableViewCell()
+        }
         let post = posts[indexPath.row]
-        print("** \(post.caption)")
-
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        cell.configCell(post: post)
+        return cell
     }
-
-
 
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
 
