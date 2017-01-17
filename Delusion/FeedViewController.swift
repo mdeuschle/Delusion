@@ -17,6 +17,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
-        
+
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshots) in
             if let snaps = snapshots.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snaps {
@@ -53,7 +54,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
         let post = posts[indexPath.row]
-        cell.configCell(post: post)
+        if let image = FeedViewController.imageCache.object(forKey: post.imageURL as NSString) {
+            cell.configCell(post: post, img: image)
+        } else {
+            cell.configCell(post: post)
+        }
         return cell
     }
 
@@ -81,7 +86,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func camButtonTapped(_ sender: UIButton) {
         present(imagePicker, animated: true, completion: nil)
-        
     }
 }
 
