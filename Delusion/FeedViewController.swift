@@ -14,10 +14,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var feedTableView: UITableView!
+    @IBOutlet var captionTextField: UITextField!
 
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    var isImageSelected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             cameraButton.setBackgroundImage(image, for: .normal)
+            isImageSelected = true
         } else {
             print("Image not found")
         }
@@ -87,7 +90,63 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func camButtonTapped(_ sender: UIButton) {
         present(imagePicker, animated: true, completion: nil)
     }
+    @IBAction func PostButtonTapped(_ sender: UIButton) {
+
+        guard let caption = captionTextField.text, caption != "" else {
+            //TODO alert text field empty
+            return
+        }
+        guard let img = cameraButton.currentBackgroundImage, isImageSelected else {
+            //TODO alert
+            return
+        }
+        if let imageData = UIImageJPEGRepresentation(img, 0.2) {
+
+            let imageID = NSUUID().uuidString
+            let metaData = FIRStorageMetadata()
+            metaData.contentType = "image/jpeg"
+
+            DataService.ds.REF_POSTS_IMAGES.child(imageID).put(imageData, metadata: metaData, completion: { (metaData, error) in
+                if error != nil {
+                    //TODO alert
+                    print("Unable to download image to FB storage")
+                } else {
+                    print("Successfully uploaded image to FB storage")
+                    if let meta = metaData {
+                        if let downloadURL = meta.downloadURL()?.absoluteString {
+                            print(downloadURL)
+
+
+                        }
+                    }
+//                    let downloadURL = metaData?.downloadURL()?.absoluteString
+                }
+            })
+
+
+
+
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
