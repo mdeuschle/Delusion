@@ -29,6 +29,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         imagePicker.delegate = self
 
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshots) in
+            self.posts = []
             if let snaps = snapshots.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snaps {
                     print("SNAP: \(snap)")
