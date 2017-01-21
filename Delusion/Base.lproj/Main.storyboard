@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-iC-igw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delusion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csG-89-jFm">
                                 <rect key="frame" x="16" y="80" width="343" height="48"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qm-sb-aAY" customClass="RoundedButton" customModule="Delusion" customModuleProvider="target">
-                                <rect key="frame" x="34" y="305.5" width="307" height="86"/>
+                                <rect key="frame" x="34" y="256.5" width="307" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="2fn-y1-vgm"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2s-Ek-D30">
-                                <rect key="frame" x="36" y="411.5" width="303" height="44"/>
+                                <rect key="frame" x="36" y="362.5" width="303" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="hww-fC-aQy"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-yZ-Iud">
-                                <rect key="frame" x="36" y="476.5" width="303" height="44"/>
+                                <rect key="frame" x="36" y="427.5" width="303" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="seA-Nc-e7F"/>
                                 </constraints>
@@ -79,27 +79,27 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have not signed up before, an accout will automatically be created for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvs-O9-lsW">
-                                <rect key="frame" x="16" y="613.5" width="343" height="33.5"/>
+                                <rect key="frame" x="16" y="564.5" width="343" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyW-ZC-Fah">
-                                <rect key="frame" x="36" y="463.5" width="303" height="1"/>
+                                <rect key="frame" x="36" y="414.5" width="303" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="oHB-pg-W48"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mr5-Ke-Iua">
-                                <rect key="frame" x="36" y="528.5" width="303" height="1"/>
+                                <rect key="frame" x="36" y="479.5" width="303" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="oqD-cV-gHb"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLc-g3-I0f" customClass="RoundedButton" customModule="Delusion" customModuleProvider="target">
-                                <rect key="frame" x="36" y="549.5" width="303" height="44"/>
+                                <rect key="frame" x="36" y="500.5" width="303" height="44"/>
                                 <color key="backgroundColor" red="0.37775316834449768" green="0.79370385408401489" blue="0.74529069662094116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ZO5-QH-VgQ"/>
@@ -345,6 +345,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="VbW-ia-xG1" id="eVX-Ei-Ass"/>
+                                            <outlet property="likesImage" destination="Ncf-E4-PMK" id="SYa-q1-z8o"/>
                                             <outlet property="likesLabel" destination="yVd-9L-eBs" id="yDK-62-ReW"/>
                                             <outlet property="postImage" destination="ga3-7q-j2y" id="rDJ-zf-t2Z"/>
                                             <outlet property="profileImage" destination="iVd-xT-W1I" id="1B3-hu-jn5"/>

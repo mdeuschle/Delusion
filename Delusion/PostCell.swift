@@ -16,6 +16,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet var likesImage: CircleView!
 
     var post: Post!
 
@@ -45,8 +46,21 @@ class PostCell: UITableViewCell {
                 }
             })
         }
+        let likesRef = DataService.ds.REF_USER_CURRENT.child("likes")
+        likesRef.observe(.value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.likesImage.image = #imageLiteral(resourceName: "empty-heart")
+            } else {
+                self.likesImage.image = #imageLiteral(resourceName: "filled-heart")
+            }
+        })
+
     }
 }
+
+
+
+
 
 
 
