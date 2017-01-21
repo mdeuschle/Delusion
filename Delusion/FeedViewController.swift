@@ -75,6 +75,23 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         imagePicker.dismiss(animated: true, completion: nil)
     }
 
+    func postToFirebase(imageURL: String) {
+        if let captionText = captionTextField.text {
+            let postDic: Dictionary<String, AnyObject> = [
+                "imageURL": imageURL as AnyObject,
+                "caption": captionText as AnyObject,
+                "likes": 0 as AnyObject
+            ]
+            DataService.ds.REF_POSTS.childByAutoId().setValue(postDic)
+
+            captionTextField.text = ""
+            isImageSelected = false
+            cameraButton.setBackgroundImage(UIImage(), for: .normal)
+
+            feedTableView.reloadData()
+        }
+    }
+
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
 
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
@@ -114,18 +131,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print("Successfully uploaded image to FB storage")
                     if let meta = metaData {
                         if let downloadURL = meta.downloadURL()?.absoluteString {
-                            print(downloadURL)
-
-
+                            self.postToFirebase(imageURL: downloadURL)
                         }
                     }
-//                    let downloadURL = metaData?.downloadURL()?.absoluteString
                 }
             })
-
-
-
-
         }
     }
 }
