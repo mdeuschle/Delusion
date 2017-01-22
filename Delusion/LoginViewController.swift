@@ -32,7 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let retrievedString = KeychainWrapper.standard.string(forKey: KEY_UID) {
+        if let retrievedString = KeychainWrapper.standard.string(forKey: Constants.KeyTypes.keyUID) {
             performSegue(withIdentifier: "FeedSegue", sender: nil)
             print("KEY UID: \(retrievedString)")
         }
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func userSignIn(id: String, userData: [String: String]) {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
-        KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        KeychainWrapper.standard.set(id, forKey: Constants.KeyTypes.keyUID)
         performSegue(withIdentifier: "FeedSegue", sender: nil)
     }
 

@@ -8,5 +8,18 @@
 
 import Foundation
 
-let KEY_UID = "uid"
+struct Constants {
+
+    struct KeyTypes {
+        static let keyUID = "uid"
+
+    }
+
+    struct ErrorPopUp {
+        static let passwordCharLength = "Please enter 6 or more characters for password"
+    }
+
+
+}
+
 

@@ -94,7 +94,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
 
-        let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        let keychainResult = KeychainWrapper.standard.removeObject(forKey: Constants.KeyTypes.keyUID)
         print("*Removed keychain: \(keychainResult)")
         do {
             try FIRAuth.auth()?.signOut()
