@@ -23,6 +23,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailLine: UIView!
     @IBOutlet var passwordLine: UIView!
 
+    weak var delegate: LoginViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -41,84 +43,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         appDescLabel.isHidden = true
         facebookButton.isHidden = true
         weDontPostToFbLabel.isHidden = true
-        if textField == emailTextField {
-            emailTextField.placeholder = ""
-            emailLine.isHidden = false
-            passwordLine.isHidden = true
-        }
-        if textField == passwordTextField {
-            passwordTextField.placeholder = ""
-            emailLine.isHidden = true
-            passwordLine.isHidden = false
-        }
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == emailTextField && emailTextField.text == "" {
-            emailTextField.placeholder = "Email"
-        }
-        if textField == passwordTextField && passwordTextField.text == "" {
-            passwordTextField.placeholder = "Password"
-        }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        userLogin()
+        return true
     }
 
-    @IBAction func fbButtonTapped(_ sender: RoundedButton) {
-
-        let fbLogin = FBSDKLoginManager()
-        fbLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-            if let res = result {
-                if error != nil {
-                    print("Not Able To Login To FB \(error?.localizedDescription)")
-                } else if result?.isCancelled == true {
-                    print("User cancelled FB auth \(res.debugDescription)")
-                } else {
-                    print("Successfully authenticated with FB \(res)")
-                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                    self.fireBaseAuth(credential)
-                }
-            }
-        }
-    }
-
-    func fireBaseAuth(_ credential: FIRAuthCredential) {
-        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-            if let fbUser = user {
-                if error != nil {
-                    print("Not able to authenticate with Firebase \(error?.localizedDescription)")
-                } else {
-                    print("Successfully authenticated with Firebase \(fbUser.debugDescription)")
-                    let userData = self.createUserDataDic(providerID: credential.provider)
-                    self.userSignIn(id: fbUser.uid, userData: userData)
-                }
-            }
-        })
-    }
-
-    @IBAction func loginButtonTapped(_ sender: RoundedButton) {
-
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                if error == nil {
-                    print("User email authenciated with Firebase")
-                    if let emailUser = user {
-                        let userData = self.createUserDataDic(providerID: emailUser.providerID)
-                        self.userSignIn(id: emailUser.uid, userData: userData)
-                    }
-                } else {
-                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if let emailUser = user {
-                            if error != nil {
-                                print("Error during email login \(error)")
-                            } else {
-                                print("New user created")
-                                let userData = self.createUserDataDic(providerID: emailUser.providerID)
-                                self.userSignIn(id: emailUser.uid, userData: userData)
-                            }
-                        }
-                    })
-                }
-            })
-        }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delusionLabel.isHidden = false
+        appDescLabel.isHidden = false
+        facebookButton.isHidden = false
+        weDontPostToFbLabel.isHidden = false
+        view.endEditing(true)
     }
 
     func createUserDataDic(providerID: String) -> [String: String] {
@@ -148,7 +86,75 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    
+    func fireBaseAuth(_ credential: FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if let fbUser = user {
+                if error != nil {
+                    print("Not able to authenticate with Firebase \(error?.localizedDescription)")
+                } else {
+                    print("Successfully authenticated with Firebase \(fbUser.debugDescription)")
+                    let userData = self.createUserDataDic(providerID: credential.provider)
+                    self.userSignIn(id: fbUser.uid, userData: userData)
+                }
+            }
+        })
+    }
+
+    func userLogin() {
+
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                if error == nil {
+                    print("User email authenciated with Firebase")
+                    if let emailUser = user {
+                        let userData = self.createUserDataDic(providerID: emailUser.providerID)
+                        self.userSignIn(id: emailUser.uid, userData: userData)
+                    }
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                        if let emailUser = user {
+                            if error != nil {
+                                print("Error during email login \(error)")
+                            } else {
+                                print("New user created")
+                                let userData = self.createUserDataDic(providerID: emailUser.providerID)
+                                self.userSignIn(id: emailUser.uid, userData: userData)
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    }
+
+
+    //    func logUserIn() {
+    //        let vc = PopUpViewController(nibName: "PopUpView", bundle: nil)
+    //        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+    //        self.present(vc, animated: true, completion: nil)
+    //    }
+
+    @IBAction func fbButtonTapped(_ sender: RoundedButton) {
+
+        let fbLogin = FBSDKLoginManager()
+        fbLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if let res = result {
+                if error != nil {
+                    print("Not Able To Login To FB \(error?.localizedDescription)")
+                } else if result?.isCancelled == true {
+                    print("User cancelled FB auth \(res.debugDescription)")
+                } else {
+                    print("Successfully authenticated with FB \(res)")
+                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                    self.fireBaseAuth(credential)
+                }
+            }
+        }
+    }
+
+    @IBAction func loginButtonTapped(_ sender: RoundedButton) {
+        userLogin()
+    }
 }
 
 
