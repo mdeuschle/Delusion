@@ -16,7 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-
+    @IBOutlet var delusionLabel: UILabel!
+    @IBOutlet var appDescLabel: UILabel!
+    @IBOutlet var facebookButton: RoundedButton!
+    @IBOutlet var weDontPostToFbLabel: UILabel!
+    @IBOutlet var emailLine: UIView!
+    @IBOutlet var passwordLine: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +36,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        delusionLabel.isHidden = true
+        appDescLabel.isHidden = true
+        facebookButton.isHidden = true
+        weDontPostToFbLabel.isHidden = true
         if textField == emailTextField {
             emailTextField.placeholder = ""
+            emailLine.isHidden = false
+            passwordLine.isHidden = true
         }
         if textField == passwordTextField {
             passwordTextField.placeholder = ""
+            emailLine.isHidden = true
+            passwordLine.isHidden = false
         }
     }
 

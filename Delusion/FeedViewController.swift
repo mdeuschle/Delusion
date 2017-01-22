@@ -32,7 +32,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.posts = []
             if let snaps = snapshots.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snaps {
-                    print("SNAP: \(snap)")
                     if let postDic = snap.value as? [String: AnyObject] {
                         let post = Post(postKey: snap.key, postData: postDic)
                         self.posts.append(post)
