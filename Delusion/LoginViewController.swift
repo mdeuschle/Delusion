@@ -12,10 +12,6 @@ import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
 
-protocol UpdatePopUpTextDelegate {
-    func updatePopUpText(popUpText: String)
-}
-
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var emailTextField: UITextField!
@@ -23,17 +19,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var delusionLabel: UILabel!
     @IBOutlet var appDescLabel: UILabel!
     @IBOutlet var facebookButton: RoundedButton!
-    @IBOutlet var weDontPostToFbLabel: UILabel! 
+    @IBOutlet var weDontPostToFbLabel: UILabel!
     @IBOutlet var emailLine: UIView!
     @IBOutlet var passwordLine: UIView!
-
-    var updatePopUpTextDelegate: UpdatePopUpTextDelegate?
-    var popUpVC: PopUpViewController?
+    var errorString: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        popUpVC = PopUpViewController()
-        updatePopUpTextDelegate = popUpVC
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -122,11 +114,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                         if let emailUser = user {
                             if error != nil {
-                                print("Error during email login \(error)")
+                                if let err = error {
+                                    self.errorString = err.localizedDescription
+                                    self.performSegue(withIdentifier: "LoginPopSegue", sender: self)
+                                }
                             } else {
                                 print("New user created")
                                 let userData = self.createUserDataDic(providerID: emailUser.providerID)
                                 self.userSignIn(id: emailUser.uid, userData: userData)
+                            }
+                        } else {
+                            if let err = error {
+                                self.errorString = err.localizedDescription
+                                self.performSegue(withIdentifier: "LoginPopSegue", sender: self)
                             }
                         }
                     })
@@ -135,9 +135,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginPopSegue" {
+            if let dvc = segue.destination as? PopUpViewController {
+                dvc.errorString = self.errorString
+            }
+        }
+    }
 
     @IBAction func fbButtonTapped(_ sender: RoundedButton) {
-
         let fbLogin = FBSDKLoginManager()
         fbLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if let res = result {
@@ -155,18 +161,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginButtonTapped(_ sender: RoundedButton) {
-
-        if let delegate = updatePopUpTextDelegate {
-            delegate.updatePopUpText(popUpText: Constants.ErrorPopUp.passwordCharLength)
-        }
-
-//
-//        let vc = PopUpViewController(nibName: "PopUpView", bundle: nil)
-//        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//        self.present(vc, animated: true, completion: nil)
-        
-//        userLogin()
+        userLogin()
     }
+
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 }
 
 

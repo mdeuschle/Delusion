@@ -8,17 +8,18 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController, UpdatePopUpTextDelegate {
+class PopUpViewController: UIViewController {
 
-    @IBOutlet var popUpText: UILabel!
+    @IBOutlet var loginErrorLabel: UILabel!
+    @IBOutlet var errorPopUpButton: UIButton!
+
+    var errorString: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-
-    func updatePopUpText(popUpText: String) {
-        print("POP UP TEXT: \(popUpText)")
+        if let errorStr = errorString {
+            loginErrorLabel.text = errorStr
+        }
     }
 
 }

@@ -14,12 +14,6 @@ struct Constants {
         static let keyUID = "uid"
 
     }
-
-    struct ErrorPopUp {
-        static let passwordCharLength = "Please enter 6 or more characters for password"
-    }
-
-
 }
 
 

@@ -10,9 +10,7 @@
 		9F4EE359E2399A4858DC2F87 /* Pods_Delusion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA690EF76E70EAB29144B6 /* Pods_Delusion.framework */; };
 		A85117C71E2B59B3000A8152 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85117C61E2B59B3000A8152 /* DataService.swift */; };
 		A85117CB1E2C20AA000A8152 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85117CA1E2C20AA000A8152 /* Post.swift */; };
-		A85647D91E34944300389A12 /* PopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A85647D81E34944300389A12 /* PopUpView.xib */; };
 		A85647DB1E34947C00389A12 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85647DA1E34947C00389A12 /* PopUpViewController.swift */; };
-		A85647DD1E355C9C00389A12 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85647DC1E355C9C00389A12 /* PopUp.swift */; };
 		A888F0E41E22C4AD002383DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888F0E31E22C4AD002383DC /* AppDelegate.swift */; };
 		A888F0E91E22C4AD002383DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A888F0E71E22C4AD002383DC /* Main.storyboard */; };
 		A888F0EE1E22C4AD002383DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A888F0EC1E22C4AD002383DC /* LaunchScreen.storyboard */; };
@@ -31,9 +29,7 @@
 		0538FDCDDF8B6B7C25F38BA6 /* Pods-Delusion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delusion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delusion/Pods-Delusion.debug.xcconfig"; sourceTree = "<group>"; };
 		A85117C61E2B59B3000A8152 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		A85117CA1E2C20AA000A8152 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A85647D81E34944300389A12 /* PopUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpView.xib; sourceTree = "<group>"; };
 		A85647DA1E34947C00389A12 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		A85647DC1E355C9C00389A12 /* PopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		A888F0E01E22C4AD002383DC /* Delusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Delusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A888F0E31E22C4AD002383DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A888F0E81E22C4AD002383DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,7 +140,6 @@
 				A89753671E24AD1300535BB4 /* ShadowView.swift */,
 				A89753691E24B41C00535BB4 /* CircleView.swift */,
 				A897536B1E26071700535BB4 /* PostCell.swift */,
-				A85647D81E34944300389A12 /* PopUpView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -153,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				A85117CA1E2C20AA000A8152 /* Post.swift */,
-				A85647DC1E355C9C00389A12 /* PopUp.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -236,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A888F0EE1E22C4AD002383DC /* LaunchScreen.storyboard in Resources */,
-				A85647D91E34944300389A12 /* PopUpView.xib in Resources */,
 				A888F0E91E22C4AD002383DC /* Main.storyboard in Resources */,
 				A888F0FD1E22E152002383DC /* Assets.xcassets in Resources */,
 				A888F0F61E22C8A0002383DC /* GoogleService-Info.plist in Resources */,
@@ -308,7 +301,6 @@
 				A897536A1E24B41C00535BB4 /* CircleView.swift in Sources */,
 				A89753641E2335D700535BB4 /* Constants.swift in Sources */,
 				A897536C1E26071700535BB4 /* PostCell.swift in Sources */,
-				A85647DD1E355C9C00389A12 /* PopUp.swift in Sources */,
 				A85117CB1E2C20AA000A8152 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
