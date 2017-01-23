@@ -8,22 +8,17 @@
 
 import UIKit
 
-protocol LoginViewControllerDelegate: class {
-    func update(popUpText: String)
-}
-
-class PopUpViewController: UIViewController {
+class PopUpViewController: UIViewController, UpdatePopUpTextDelegate {
 
     @IBOutlet var popUpText: UILabel!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
-    func updatePopUpText(popUpString: String) {
-        popUpText.text = popUpString
+    func updatePopUpText(popUpText: String) {
+        print("POP UP TEXT: \(popUpText)")
     }
 
 }

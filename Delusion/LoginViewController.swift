@@ -12,6 +12,10 @@ import FBSDKLoginKit
 import Firebase
 import SwiftKeychainWrapper
 
+protocol UpdatePopUpTextDelegate {
+    func updatePopUpText(popUpText: String)
+}
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var emailTextField: UITextField!
@@ -19,14 +23,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var delusionLabel: UILabel!
     @IBOutlet var appDescLabel: UILabel!
     @IBOutlet var facebookButton: RoundedButton!
-    @IBOutlet var weDontPostToFbLabel: UILabel!
+    @IBOutlet var weDontPostToFbLabel: UILabel! 
     @IBOutlet var emailLine: UIView!
     @IBOutlet var passwordLine: UIView!
 
-    weak var delegate: LoginViewControllerDelegate?
+    var updatePopUpTextDelegate: UpdatePopUpTextDelegate?
+    var popUpVC: PopUpViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        popUpVC = PopUpViewController()
+        updatePopUpTextDelegate = popUpVC
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -37,6 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("KEY UID: \(retrievedString)")
         }
     }
+
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delusionLabel.isHidden = true
@@ -128,12 +136,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
 
-    //    func logUserIn() {
-    //        let vc = PopUpViewController(nibName: "PopUpView", bundle: nil)
-    //        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-    //        self.present(vc, animated: true, completion: nil)
-    //    }
-
     @IBAction func fbButtonTapped(_ sender: RoundedButton) {
 
         let fbLogin = FBSDKLoginManager()
@@ -153,7 +155,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func loginButtonTapped(_ sender: RoundedButton) {
-        userLogin()
+
+        if let delegate = updatePopUpTextDelegate {
+            delegate.updatePopUpText(popUpText: Constants.ErrorPopUp.passwordCharLength)
+        }
+
+//
+//        let vc = PopUpViewController(nibName: "PopUpView", bundle: nil)
+//        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        self.present(vc, animated: true, completion: nil)
+        
+//        userLogin()
     }
 }
 
