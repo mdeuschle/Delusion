@@ -12,6 +12,7 @@ class PopUpViewController: UIViewController {
 
     @IBOutlet var loginErrorLabel: UILabel!
     @IBOutlet var errorPopUpButton: UIButton!
+    @IBOutlet var buttonBackground: UIView!
 
     var errorString: String?
 
@@ -20,6 +21,6 @@ class PopUpViewController: UIViewController {
         if let errorStr = errorString {
             loginErrorLabel.text = errorStr
         }
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
-
 }

@@ -37,7 +37,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-
     func textFieldDidBeginEditing(_ textField: UITextField) {
         delusionLabel.isHidden = true
         appDescLabel.isHidden = true
